@@ -49,7 +49,25 @@ namespace DogParks.Models
                     Address = "SW 27th Avenue and Hillsdale Highway",
                     Hours = "5AM-12AM",
                     PhotoPath = "https://www.portlandoregon.gov/parks/finder/index.cfm?action=ViewFile&PolPhotosID=799"
-                }
+                },
+                new DogPark
+                {
+                    DogParkId = 5,
+                    Name = "Mt.Tabor Park",
+                    Area = "Southeast",
+                    Address = "SE 60th Avenue and Salmon Street",
+                    Hours = "5AM-12AM",
+                    PhotoPath = "https://www.portlandoregon.gov/parks/finder/index.cfm?action=ViewFile&PolPhotosID=33"
+                },
+                 new DogPark
+                 {
+                     DogParkId = 6,
+                     Name = "Fernhill Park",
+                     Area = "Northeast",
+                     Address = "NE 37th Avenue and Ainsworth Street",
+                     Hours = "5AM-12AM",
+                     PhotoPath = "https://www.portlandoregon.gov/parks/finder/index.cfm?action=ViewFile&PolPhotosID=90"
+                 }
             );
         }
     }

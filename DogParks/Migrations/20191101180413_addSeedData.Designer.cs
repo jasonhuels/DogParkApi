@@ -2,14 +2,16 @@
 using DogParks.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BuildAnApi.Solution.Migrations
 {
     [DbContext(typeof(DogParksContext))]
-    partial class DogParksContextModelSnapshot : ModelSnapshot
+    [Migration("20191101180413_addSeedData")]
+    partial class addSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

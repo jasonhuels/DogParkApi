@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Http;
 
 namespace DogParks.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class DogParksController : ControllerBase
     {
         private DogParksContext _db;
@@ -43,7 +45,7 @@ namespace DogParks.Controllers
             {
                 query = query.Where(entry => entry.Hours.ToLower().Contains(hours.ToLower()));
             }
-            return _db.DogParks.ToList();
+            return query.ToList();
         }
 
         // GET api/dogparks/{id}
