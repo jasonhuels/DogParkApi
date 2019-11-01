@@ -74,21 +74,15 @@ namespace DogParks.Controllers
         
         // PATCH api/dogparks/{id}
         [HttpPatch("{id}")]
-        public void Update(int id, [FromBody] string name, string hours, string photoPath)
+        public void Update(int id, [FromBody] string hours)
         {
             DogParks.Models.DogPark dp = _db.DogParks.FirstOrDefault(entry => entry.DogParkId == id);
-            if (name != null)
-            {
-                dp.Name = name;
-            }
+
             if (hours != null)
             {
                 dp.Hours = hours;
             }
-            if (photoPath != null)
-            {
-                dp.PhotoPath = photoPath;
-            }
+
             _db.Entry(dp).State = EntityState.Modified;
             _db.SaveChanges();
         }
