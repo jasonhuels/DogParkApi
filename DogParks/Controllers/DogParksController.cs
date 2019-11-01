@@ -29,25 +29,58 @@ namespace DogParks.Controllers
         }
 
         // GET api/dogparks/{id}
-        // [HttpGet("{id}")]
-        // public ActionResult<DogPark> Get(int id)
-        // {
-            
-        // }
+        [HttpGet("{id}")]
+        public ActionResult<DogParks.Models.DogPark> Get(int id)
+        {
+            return _db.DogParks.FirstOrDefault(entry => entry.DogParkId == id);
+        }
 
         // POST api/dogparks
-        //[HttpPost]
+        [HttpPost]
+        public void Post([FromBody] DogParks.Models.DogPark dogPark)
+        {
+            _db.DogParks.Add(dogPark);
+            _db.SaveChanges();
+        }
 
         // PUT api/dogparks/{id}
-        //[HttpPut("{id}")]
-
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] DogParks.Models.DogPark dogPark)
+        {
+            dogPark.DogParkId = id;
+            _db.Entry(dogPark).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+        
         // PATCH api/dogparks/{id}
-        //[HttpPatch("{id}")]
+        [HttpPatch("{id}")]
+        public void Update(int id, [FromBody] string name, string hours, string photoPath)
+        {
+            DogParks.Models.DogPark dp = _db.DogParks.FirstOrDefault(entry => entry.DogParkId == id);
+            if (name != null)
+            {
+                dp.Name = name;
+            }
+            if (hours != null)
+            {
+                dp.Hours = hours;
+            }
+            if (photoPath != null)
+            {
+                dp.PhotoPath = photoPath;
+            }
+            _db.Entry(dp).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
 
         // DELETE api/dogparks/{id}
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var deleteMe = _db.DogParks.FirstOrDefault(entry => entry.DogParkId == id);
+            _db.DogParks.Remove(deleteMe);
+            _db.SaveChanges();
 
         }
     }
