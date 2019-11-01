@@ -28,6 +28,8 @@ _Further Exploration:_
 
 * _Clone this repository_
 * _Navigate to the directory_
+* _Run "dotnet ef migrations add ???" command (replacing ??? with a unique name)_
+* _Run "dotnet ef database update"_
 * _Run "dotnet run" command to open application in the command console_
 
 ## Known Bugs
