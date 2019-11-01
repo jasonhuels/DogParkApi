@@ -23,8 +23,26 @@ namespace DogParks.Controllers
 
         // GET api/dogparks
         [HttpGet]
-        public ActionResult<IEnumerable<DogParks.Models.DogPark>> Get()
+        public ActionResult<IEnumerable<DogParks.Models.DogPark>> Get(string name, string area, string address, string hours)
         {
+            var query = _db.DogParks.AsQueryable();
+
+            if(name != null)
+            {
+                query = query.Where(entry => entry.Name.ToLower().Contains(name.ToLower()));
+            }
+            if (area != null)
+            {
+                query = query.Where(entry => entry.Area.ToLower().Contains(area.ToLower()));
+            }
+            if (address != null)
+            {
+                query = query.Where(entry => entry.Address.ToLower().Contains(address.ToLower()));
+            }
+            if (hours != null)
+            {
+                query = query.Where(entry => entry.Hours.ToLower().Contains(hours.ToLower()));
+            }
             return _db.DogParks.ToList();
         }
 
